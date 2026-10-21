@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A sample employee attendance and overtime overview.">
+    <title>HR Attendance Overview</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="styles.css">
+    <script type="module" src="src/app.js"></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <p class="eyebrow">PEOPLE OPERATIONS</p>
+      <h1>HR Attendance Overview</h1>
+      <p class="intro">A sample view of employee attendance, punctuality, and overtime.</p>
+    </header>
+
+    <main>
+      <section class="panel" aria-labelledby="grid-heading">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">TEAM SUMMARY</p>
+            <h2 id="grid-heading">Employee attendance</h2>
+          </div>
+          <p class="sample-note">Demo data · 10 employees</p>
+        </div>
+
+        <form class="filters" aria-label="Filter employees">
+          <div class="field">
+            <label for="name-filter">Search by name</label>
+            <input id="name-filter" name="name" type="search" autocomplete="off">
+          </div>
+          <div class="field">
+            <label for="department-filter">Department</label>
+            <select id="department-filter" name="department">
+              <option value="">All departments</option>
+            </select>
+          </div>
+        </form>
+
+        <p id="grid-instructions" class="instructions">
+          Use the arrow keys to move through the grid. Press Enter on a column heading to sort or on an employee to select. Press Space on an employee to toggle selection.
+        </p>
+
+        <p id="grid-status" class="status" role="status" aria-live="polite">Loading employee records.</p>
+        <p id="empty-state" class="empty-state" hidden>Try changing or clearing a filter to see employees.</p>
+
+        <div class="table-scroll">
+          <table
+            id="employee-grid"
+            role="grid"
+            aria-labelledby="grid-heading"
+            aria-describedby="grid-instructions"
+            aria-rowcount="1"
+            aria-colcount="5"
+            aria-multiselectable="true"
+          >
+            <caption>Employee attendance and overtime data</caption>
+            <thead role="rowgroup">
+              <tr role="row" aria-rowindex="1">
+                <th id="employee-header" scope="col" role="columnheader" aria-sort="none">
+                  <button class="sort-button" type="button" tabindex="-1" data-sort-key="name" aria-label="Sort by employee name">Employee</button>
+                </th>
+                <th id="department-header" scope="col" role="columnheader">Department</th>
+                <th id="attendance-header" scope="col" role="columnheader" aria-sort="none">
+                  <button class="sort-button" type="button" tabindex="-1" data-sort-key="attendanceDays" aria-label="Sort by attendance days">Attendance days</button>
+                </th>
+                <th id="late-header" scope="col" role="columnheader" aria-sort="none">
+                  <button class="sort-button" type="button" tabindex="-1" data-sort-key="lateDays" aria-label="Sort by late days">Late days</button>
+                </th>
+                <th id="overtime-header" scope="col" role="columnheader" aria-sort="none">
+                  <button class="sort-button" type="button" tabindex="-1" data-sort-key="overtimeHours" aria-label="Sort by overtime hours">Overtime hours</button>
+                </th>
+              </tr>
+            </thead>
+            <tbody id="employee-rows" role="rowgroup"></tbody>
+          </table>
+        </div>
+
+        <nav class="pagination" aria-label="Employee pages">
+          <p id="page-indicator" aria-live="polite">Page 0 of 0</p>
+          <div class="page-controls">
+            <button id="previous-page" type="button" aria-label="Previous page" disabled>Previous</button>
+            <button id="next-page" type="button" aria-label="Next page" disabled>Next</button>
+          </div>
+        </nav>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Introductory exercise · Fictional sample data</p>
+    </footer>
+
+    <noscript>This demo needs JavaScript enabled to display employee records.</noscript>
+  </body>
+</html>
